@@ -1,0 +1,30 @@
+{% extends 'header.html'%}
+{%block content %}
+    <div class="container mt-2">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="productname">Product Name</label>
+                <input type="text" name="name" class="form-control" id="name" aria-describedby="productname"
+                    placeholder="Enter product name" required>
+            </div>
+            <div class="form-group">
+                <label for="productdescription">Product Description</label>
+                <input type="text" name="description" class="form-control" id="description"
+                    aria-describedby="productdescription" placeholder="Enter product description" required>
+            </div>
+            <div class="form-group">
+                <label for="productprice">Product Price</label>
+                <input type="text" name="price" class="form-control" id="price" aria-describedby="productprice"
+                    placeholder="Enter product price" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Product</button>
+            <p>Back to view page click <a href="{% url 'showproduct' %}">here</a></p>
+            {% if messages %}
+            {% for message in messages%}
+            <div style="color: red">{{message}}</div>
+            {% endfor %}
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}
